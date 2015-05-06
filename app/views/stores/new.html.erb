@@ -1,0 +1,73 @@
+<!-- Left Side Navigation -->
+<%= render 'common/leftside' %>
+<!-- Content -->
+<div id="wrapper">
+  <div class="hidden-xs" id="map" style='width: 50%; float:left; height: 100%; z-index:999;'></div>
+  <div id="content" class="mob-max">
+    <div class="rightContainer">
+      <h1>推薦商家給站方</h1>
+      <%= form_for @store , role: :'form' do |f|  %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+          <div class="form-group">
+            <label>商家名稱</label>
+            <%= f.text_field :name, class: :'form-control' %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label>商家類型</label>
+          <div class="form-group">
+            <div class="btn-group">
+              <div class="clearfix"></div>
+              <a href="#" data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+              <span class="dropdown-label">選擇類型</span>&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-select">
+                <li class="active"><%= f.radio_button :st_type, '口碑商家' %>
+                <%= link_to '口碑商家', '#' %></li>
+                <li><%= f.radio_button :st_type, '知名商家' %> <%= link_to '知名商家', '#' %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="form-group">
+            <label>封面照片</label>
+            <input type="file" class="file" multiple data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-o btn-default" data-browse-label="Browse Images">
+            <p class="help-block">建議上傳尺寸為800px x 480px</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>地址</label>
+        <div class="input-group">
+          <div class="input-group-addon"><span class="icon-pointer"></span></div>
+          <%= f.text_field :address, class: :'form-control', placeholder: :'例如:高雄市新興區xx路1號' %>
+        </div>
+        <p class="help-block">請輸入商家所在地點</p>
+      </div>
+      <div class="form-group">
+        <label>電話</label>
+        <div class="input-group">
+          <div class="input-group-addon"><span class="icon-pointer"></span></div>
+          <%= f.text_field :tel, class: :'form-control', placeholder: :'071234567' %>
+        </div>
+        <p class="help-block">請輸入商家訂購專線</p>
+      </div>
+      <div class="form-group">
+        <label>描述</label>
+        <%= f.text_area :desc, class: :'form-control' %>
+      </div>
+      <div class="form-group">
+
+        <%= f.submit '送出', class: :'str_replace' %>
+        <%= link_to '返回列表', spadm_stores_url %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<%= render 'common/map' %>

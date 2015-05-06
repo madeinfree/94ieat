@@ -1,0 +1,11 @@
+(function(){
+  var $registrationForm = $('#signup');
+  var $form = $('<%= j render 'form' %>');
+
+  if ($registrationForm.size() > 0) {
+    $registrationForm.modal();
+  } else {
+    $('body').append($form);
+    $form.modal();
+  }
+})();

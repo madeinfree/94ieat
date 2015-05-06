@@ -1,0 +1,18 @@
+<div class="panel-heading">購物車</div>
+<% sum = 0 %>
+<% @cis.each do |p| %>
+<div class="panel-body">
+  <%= get_name(p.product.id) %> x
+  <%= p.qty %>個
+  <% sum = sum + p.qty %>
+</div>
+<% end %>
+<div class="panel-heading">
+  商品數共<%= sum %>個
+</div>
+<div class="panel-heading">
+  外送費<%= shipping_free(sum) %>
+</div>
+<div class="panel-body">
+  <%= link_to('前往結帳', checkout_carts_path, method: "post") %>
+</div>

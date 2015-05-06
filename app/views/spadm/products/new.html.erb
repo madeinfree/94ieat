@@ -1,0 +1,84 @@
+<!-- Left Side Navigation -->
+<%= render 'common/sp_leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full">
+  <div id="content" class="max">
+    <div class="components">
+      <ol class="breadcrumb">
+        <li>
+          <%= link_to spadm_stores_url do %>
+          <span class="icon-home"></span> 商家列表
+          <% end %>
+        </li>
+        <li><%= @store.name %></li>
+        <li class="active">新增商品</li>
+      </ol>
+      <h3><%= @store.name %></h3>
+      <div class="row">
+        <div class="col-xs-12 col-md-8"><p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h3>商品清單</h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>品項</th>
+                    <th>價格</th>
+                    <th>限量</th>
+                    <th>販賣狀態</th>
+                  </tr>
+                </thead>
+                <tbody class="table">
+                  <% @products.each do |product| %>
+                  <tr>
+                    <td><%= product.name %></td>
+                    <td><%= product.price %></td>
+                    <td><%= product.qty %></td>
+                    <td>
+                      <div class="checkbox switch"><label><input type="checkbox" checked="checked"><span class="cs-place"><span class="fa fa-check cs-handler"></span></span></label></div>
+                    </td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4"><p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h3>新建商品</h3>
+              <%= form_for [:spadm, @product] do |f| %>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                  <div class="form-group">
+                    <label>商品名稱</label>
+                    <%= f.text_field :name, class: :'form-control' %>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>商品價錢</label>
+                    <%= f.text_field :price, class: :'form-control' %>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <label>限量(若無不用輸入)</label>
+                    <%= f.text_field :qty, class: :'form-control' %>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.submit '建立商品', class: :'str_replace' %>
+                <%= link_to '返回列表', spadm_store_path(@store.id) %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

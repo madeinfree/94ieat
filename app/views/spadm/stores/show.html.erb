@@ -1,0 +1,55 @@
+<!-- Left Side Navigation -->
+<%= render 'common/sp_leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full">
+    <div id="content" class="max">
+        <div class="components">
+            <ol class="breadcrumb">
+                <li>
+                    <%= link_to spadm_stores_url do %>
+                    <span class="icon-home"></span> 商家列表
+                    <% end %>
+                </li>
+                <li class="active"><%= @store.name %></li>
+            </ol>
+            <h3>商品清單</h3>
+            <div class="row">
+                <div class="col-xs-12 col-md-8"><p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>設為主打</th>
+                                    <th>品項</th>
+                                    <th>價格</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table">
+                            <% @products.each do |product| %>
+                            <tr>
+                                <td>
+                                  <div class="checkbox switch"><label><input type="checkbox" checked="checked"><span class="cs-place"><span class="fa fa-check cs-handler"></span></span></label></div>
+                                </td>
+                                <td><%= product.name %></td>
+                                <td><%= product.price %></td>
+                            </tr>
+                            <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                    <div class="panel panel-default">
+                        <div class="panel-body"><%= link_to '新增餐點', new_spadm_product_path %></div>
+                        <div class="panel-body"><%= link_to '餐點清單', spadm_store_path(params[:id]) %></div>
+                        <div class="panel-body">查看訂單</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

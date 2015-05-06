@@ -1,0 +1,68 @@
+<!-- Left Side Navigation -->
+<%= render 'common/sp_leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full">
+  <div id="content" class="max">
+    <div class="components">
+      <ol class="breadcrumb">
+        <li>
+          <%= link_to spadm_root_url do %>
+          <span class="icon-home"></span> 首頁
+          <% end %>
+        </li>
+        <li>全站設定</li>
+        <li class="active">修改</li>
+      </ol>
+      <h3>全站設定</h3>
+      <div class="row">
+        <div class="col-xs-12 col-md-8"><p>
+          <div class="panel panel-default">
+            <div class="panel-heading">站台資訊</div>
+            <div class="panel-body">
+              <%= form_for [:spadm, @setting], :class => 'form-horizontal',
+              :role => 'form' do |f| %>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-10">
+                  <%= f.text_field :title, :class =>"form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">SEO</label>
+                <div class="col-sm-10">
+                  <%= f.text_area :SEO, rows: '3', :class =>"form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Keyword</label>
+                <div class="col-sm-10">
+                  <%= f.text_field :keyword , :class =>"form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <%= f.submit '確認修改' %>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4"><p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                  <div class="form-group">
+                    <%= link_to '返回上層', spadm_settings_url %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

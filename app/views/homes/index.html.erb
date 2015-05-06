@@ -1,0 +1,112 @@
+<!-- Content -->
+<div class="home-wrapper">
+  <div class="home-content">
+    <!-- Hero -->
+    <div class="highlight">
+      <div class="h-title osLight">還在等人開團嗎?</div>
+      <div class="h-text osLight">別等了~訂餐不求人！每日嚴選在地「知名商家、巷弄美食」</div>
+    </div>
+    <h2 class="osLight"> </h2>
+    <div class="row pb40">
+      <% (1..6).each do %>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <%= link_to store_path(1), class: :"propWidget-2" do %>
+        <div class="fig">
+          <img src="/assets/images/prop/1-1.png" alt="Modern Residence in New York">
+          <img class="blur" src="images/prop/1-1.png" alt="Modern Residence in New York">
+          <div class="opac"></div>
+          <div class="priceCap osLight"><span>阿英排骨飯</span></div>
+          <div class="figType">知名商家</div>
+          <h3 class="osLight">排骨飯、雞腿飯</h3>
+          <div class="address">高雄市鹽埕區</div>
+          <ul class="rating">
+            <li><span class="fa fa-star star-1"></span></li>
+            <li><span class="fa fa-star star-2"></span></li>
+            <li><span class="fa fa-star star-3"></span></li>
+            <li><span class="fa fa-star star-4"></span></li>
+            <li><span class="fa fa-star-o star-5"></span></li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <h2 class="osLight">我們的服務</h2>
+    <div class="row pb40">
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 s-menu-item">
+        <a href="#">
+        <span class="icon-users s-icon"></span>
+        <div class="s-content">
+          <h2 class="s-main osLight">人數過少不成團</h2>
+          <h3 class="s-sub osLight">訂餐不求人,只要你想吃我就幫你送</h3>
+        </div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 s-menu-item">
+        <a href="#">
+        <span class="icon-tag s-icon"></span>
+        <div class="s-content">
+          <h2 class="s-main osLight">週週送您加菜金</h2>
+          <h3 class="s-sub osLight">試營運期間加入會員,週週送您高額加菜金</h3>
+        </div>
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 s-menu-item">
+        <a href="#">
+        <span class="icon-pointer s-icon"></span>
+        <div class="s-content">
+          <h2 class="s-main osLight">口碑商家怎麼點</h2>
+          <h3 class="s-sub osLight">每間店都有自己的主打不再迷惘該挑啥</h3>
+        </div>
+        </a>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 s-menu-item">
+        <a href="#">
+        <span class="icon-target s-icon"></span>
+        <div class="s-content">
+          <h2 class="s-main osLight">園區取貨最方便</h2>
+          <h3 class="s-sub osLight">不定期邀請正咩定點派送便當</h3>
+        </div>
+        </a>
+      </div>
+    </div>
+    <h2 class="osLight">服務團隊</h2>
+    <div id="home-testimonials" class="carousel slide carousel-wb mb20" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#home-testimonials" data-slide-to="0" class="active"></li>
+        <li data-target="#home-testimonials" data-slide-to="1" class=""></li>
+        <li data-target="#home-testimonials" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="/assets/images/avatar-2.png" class="home-testim-avatar" alt="Jane Smith">
+          <div class="home-testim">
+            <div class="home-testim-text">描述</div>
+            <div class="home-testim-name">姓名1</div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/assets/images/avatar-3.png" class="home-testim-avatar" alt="Rust Cohle">
+          <div class="home-testim">
+            <div class="home-testim-text">描述</div>
+            <div class="home-testim-name">姓名2</div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/assets/images/avatar-3.png" class="home-testim-avatar" alt="Rust Cohle">
+          <div class="home-testim">
+            <div class="home-testim-text">描述</div>
+            <div class="home-testim-name">姓名3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<div class="home-footer">
+  <div class="home-wrapper">
+    <div class="copyright">便當菜外送 - 「嚴選」在地商家網路訂餐、超省時的美食外送服務！<br> &copy; 2015</div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @setting.title %></title>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application' %>
+
+  </head>
+  <body class="notransition">
+    <!-- Header -->
+    <%= render 'common/header' %>
+    <%= yield %>
+    <script src="/assets/js/json2.js"></script>
+    <script src="/assets/js/jquery-2.1.1.min.js"></script>
+    <script src="/assets/js/underscore.js"></script>
+    <script src="/assets/js/moment-2.5.1.js"></script>
+    <script src="/assets/js/jquery-ui.min.js"></script>
+    <script src="/assets/js/jquery-ui-touch-punch.js"></script>
+    <script src="/assets/js/jquery.placeholder.js"></script>
+    <script src="/assets/js/bootstrap.js"></script>
+    <script src="/assets/js/jquery.touchSwipe.min.js"></script>
+    <script src="/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="/assets/js/jquery.visible.js"></script>
+    <script src="/assets/js/infobox.js"></script>
+    <script src="/assets/js/clndr.js"></script>
+    <script src="/assets/js/jquery.tagsinput.min.js"></script>
+    <script src="/assets/js/bootstrap-datepicker.js"></script>
+    <script src="/assets/js/fileinput.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/calendar.js"></script>
+  </body>
+</html>

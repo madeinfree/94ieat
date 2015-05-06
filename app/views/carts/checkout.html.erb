@@ -1,0 +1,48 @@
+<!-- Left Side Navigation -->
+<%= render 'common/leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full">
+  <div id="content" class="max">
+    <div class="whiteBg">
+      <div class="panel panel-default">
+        <div class="panel-heading">確認商品明細</div>
+        <% 
+          sum = 0
+          total = 0 
+        %>
+        <% @ci.each do |p| %>
+        <div class="panel-body">
+          <% sum = sum + p.qty %>
+          <% total = total + get_price(p.product.id)*p.qty %>
+          <%= get_name(p.product.id) %> -> <%= get_price(p.product.id) %> x <%= p.qty %>個
+        </div>
+        <% end %>
+        <div class="panel-heading">
+        商品數<%= sum %>個，共<%= total %>元<br>
+        運費：<%= shipping_free(sum) %><br>
+        <%
+        total = shipping_free(sum) + total
+        %>
+        總費用：<%= total %>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">填入訂購人資訊</div>
+        <div class="panel-body">
+        <a href="http://line.me/ti/p/%40lbd0218a"><img height="36" border="0" alt="加入好友" src="http://biz.line.naver.jp/line_business/img/btn/addfriends_zh-Hant.png"></a>
+          <%= form_for @order do |f| %>
+            <%= f.hidden_field :total, value: total %>
+            <%= f.fields_for :order_infos do |info| %>
+              LineID<%= info.text_field :lineid %>
+              公司名<%= info.text_field :company %>
+              收貨人<%= info.text_field :shipping_name %>
+              配送地點<%= info.text_field :shipping_address %>
+            <% end %>
+            <%= f.submit '訂單送出' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

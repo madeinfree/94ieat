@@ -1,0 +1,32 @@
+<!-- Left Side Navigation -->
+<%= render 'common/leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full">
+  <div id="content" class="max">
+    <div class="whiteBg">
+      <div class="row gridSystem">
+        <div class="col-xs-12 col-sm-6 col-md-8">
+          <div class="panel panel-default">
+          <div class="panel-heading">訂單內容</div>
+            <div class="panel-body">
+            <% @oi.each do |info| %>
+              <%= info.product_name %> -  
+              <%= info.price %>＊
+              <%= info.qty %>個<hr>
+            <% end %>
+            合計:<%= @order.total %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              試賣期間營運人員在收到您的訂單後，將與您做訂單的最後確認。            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

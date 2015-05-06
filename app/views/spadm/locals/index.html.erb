@@ -1,0 +1,36 @@
+<!-- Left Side Navigation -->
+<%= render 'common/sp_leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full">
+  <div id="content" class="max">
+    <div class="whiteBg">
+      <div class="row gridSystem">
+        <div class="col-xs-12 col-sm-6 col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-body">
+            <div style='width: 640px;'>
+              <div id="map" style='width: 640px; height: 400px;'></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <%= link_to '新增營運區', new_spadm_local_path %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>

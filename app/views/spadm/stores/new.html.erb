@@ -1,0 +1,82 @@
+<!-- Left Side Navigation -->
+<%= render 'common/sp_leftside' %>
+<!-- Content -->
+<div id="wrapper">
+    <div class="hidden-xs" id="map" style='width: 50%; float:left; height: 100%; z-index:999;'></div>
+    <div id="content" class="mob-max">
+        <div class="rightContainer">
+            <h1>新建商家(超級管理員限定)</h1>
+            <%= form_for [:spadm, @store] , role: :'form' do |f|  %>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        <div class="form-group">
+                            <label>商家名稱</label>
+                            <%= f.text_field :name, class: :'form-control' %>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <label>商家類型</label>
+                        <div class="form-group">
+                            <div class="btn-group">
+                            <div class="clearfix"></div>
+                            <a href="#" data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+                                <span class="dropdown-label">選擇類型</span>&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-select">
+                                <li class="active"><%= f.radio_button :st_type, '正餐商家' %>
+                                <%= link_to '正餐商家', '#' %></li>
+                                <li><%= f.radio_button :st_type, '飲料商家' %> <%= link_to '飲料商家', '#' %></li>
+                                <li><%= f.radio_button :st_type, '糕點商家' %> <%= link_to '糕點商家', '#' %></li>  
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label>封面照片</label>
+                            <input type="file" class="file" multiple data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-o btn-default" data-browse-label="Browse Images">
+                            <p class="help-block">建議上傳尺寸為800px x 480px</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>最大接單量</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="icon-pointer"></span></div>
+                        <%= f.text_field :max_qty, class: :'form-control', placeholder: :'若店家沒有特別說最多數量則免填!' %>
+                    </div>
+                    <p class="help-block">You can drag the marker to property position</p>
+                </div>
+                <div class="form-group">
+                    <label>地址</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="icon-pointer"></span></div>
+                        <%= f.text_field :address, class: :'form-control', placeholder: :'例如:高雄市新興區xx路1號' %>
+                    </div>
+                    <p class="help-block">You can drag the marker to property position</p>
+                </div>
+                <div class="form-group">
+                    <label>電話</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="icon-pointer"></span></div>
+                        <%= f.text_field :tel, class: :'form-control', placeholder: :'071234567' %>
+                    </div>
+                    <p class="help-block">You can drag the marker to property position</p>
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <%= f.text_area :desc, class: :'form-control' %>
+                </div>
+                <div class="form-group">
+                    
+                    <%= f.submit '建立商家', class: :'str_replace' %>
+                    <%= link_to '返回列表', spadm_stores_url %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<%= render 'common/map' %>

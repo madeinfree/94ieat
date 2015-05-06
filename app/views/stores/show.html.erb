@@ -1,0 +1,75 @@
+<!-- Left Side Navigation -->
+<%= render 'common/leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full">
+  <div id="content" class="max">
+    <div class="components">
+      <ol class="breadcrumb">
+        <li>
+          <%= link_to stores_url do %>
+          <span class="icon-home"></span> 商家清單
+          <% end %>
+        </li>
+        <li class="active"><%= @store.name %></li>
+      </ol>
+      <h2><%= @store.name %></h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-8">
+          <div class="tabsContainer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li class="active"><a href="#home" role="tab" data-toggle="tab"><span class="icon-home"></span> 線上訂購</a></li>
+              <li class=""><a href="#profile" role="tab" data-toggle="tab"><span class="icon-user"></span> 訂購資訊</a></li>
+              <li><a href="#notifications" role="tab" data-toggle="tab"><span class="icon-bubbles"></span> 商家簡介</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade active in" id="home">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>品項</th>
+                      <th>價格</th>
+                      <th width="150px"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="table">
+                    <% @products.each do |product| %>
+                    <tr>
+                      <td><%= product.name %></td>
+                      <td><%= product.price %></td>
+                        <td>
+                        <% if @store.status == '1' %>
+                          <%= link_to add_to_cart_item_product_path(product), method: :post, remote: true do  %>
+                          <span class="glyphicon glyphicon-plus"></span>
+                          <% end %>
+                        <% else %>
+                          <%= link_to '#', method: :post, remote: true do  %>
+                          尚未開放訂購
+                          <% end %>
+                        <% end %>
+                        </td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tab-pane fade" id="profile">
+                取貨型態：	園區7-11前自取<br>
+                付款方式：	貨到付款<br>
+                訂購方式：	線上下單<br>
+                備　　註：	如您發現店家訊息或菜單資料不當或有誤，歡迎您於「<a href="https://www.facebook.com/groups/993935550624428/">臉書社群</a>」通知我們。
+              </div>
+              <div class="tab-pane fade" id="notifications">尚未建立</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="panel panel-default" id="cartSection">
+            <%= render "products/cart_item" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+</div>

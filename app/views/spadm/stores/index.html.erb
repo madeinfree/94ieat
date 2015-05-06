@@ -1,0 +1,59 @@
+<!-- Left Side Navigation -->
+<%= render 'common/sp_leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full">
+  <div id="content" class="max">
+      <div class="whiteBg">
+        <div class="panel panel-default">
+            <div class="panel-heading">商家管理</div>
+            <div class="row tableContainer">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <div class="input-group input-group-sm mb5">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn"><a class="btn btn-sm btn-green"><span class="icon-magnifier"></span></a></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                	<%= link_to new_spadm_store_path, class: :'btn btn-sm btn-primary mb5' do %>
+                  	<span class="icon-drawer"></span>
+                  	新建商家
+                  <% end %>
+                  <a href="#" class="btn btn-sm btn-success mb5"><span class="fa fa-play"></span> 開始接單</a>
+                  <a href="#" class="btn btn-sm btn-warning mb5"><span class="icon-ban"></span> 暫停接單</a>
+                </div>
+            </div>
+            <div class="table-overflow">
+                <table class="table" id="inboxTable">
+                    <thead>
+                        <tr>
+                            <th style="width:10px;"><input type="checkbox"></th>
+                            <th style="width:90px;">接單狀態</th>
+                            <th style="width:90px;">商家狀態</th>
+                            <th style="width:100px;">商家類型</th>
+                            <th style="width:170px;">商家名稱</th>
+                            <th style="width:120px;">租約到期日</th>
+                        </tr>
+                    </thead>
+                    <% @stores.each do |store| %>
+                    <tbody class="table">
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                              <div class="checkbox switch"><label><input type="checkbox" checked="checked"><span class="cs-place"><span class="fa fa-check cs-handler"></span></span></label></div>
+                            </td>
+                            <td>
+                              <div class="checkbox switch"><label><input type="checkbox" checked="checked"><span class="cs-place"><span class="fa fa-check cs-handler"></span></span></label></div>
+                            </td>
+                            <td><%= store.st_type %></td>
+                            <td><%= link_to store.name, spadm_store_path(store) %></td>
+                            <td><%= store.created_at.strftime("%Y-%d-%m") %></td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+      </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

@@ -1,0 +1,11 @@
+(function(){
+  var $loginForm = $('#signin');
+  var $form = $('<%= j render 'form' %>');
+
+  if ($loginForm.size() > 0) {
+    $loginForm.modal();
+  } else {
+    $('body').append($form);
+    $form.modal();
+  }
+})();

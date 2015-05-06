@@ -1,0 +1,27 @@
+<script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
+<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
+<div id="leftSide">
+  <nav class="leftNav scrollable">
+    <div class="search">
+      <span class="searchIcon icon-magnifier"></span>
+      <input type="text" placeholder="輸入商家名">
+      <div class="clearfix"></div>
+    </div>
+    <ul>
+      <li><a href="#"><span class="navIcon fa fa-line-chart"></span><span class="navLabel">營運分析</span></a></li>
+      <li><a href="#"><span class="navIcon icon-diamond"></span><span class="navLabel">訂單管理</span></a></li>
+      <li>
+        <%= link_to spadm_stores_url do %>
+        <span class="navIcon glyphicon glyphicon-cutlery"></span><span class="navLabel">商家管理</span>
+        <% end %>
+      </li>
+      <li><a href="#"><span class="navIcon fa fa-group"></span><span class="navLabel">用戶管理</span></a></li>
+      <li>
+        <%= link_to spadm_settings_url do %>
+        <span class="navIcon glyphicon glyphicon-cutlery"></span><span class="navLabel">站台設定</span>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="closeLeftSide"></div>

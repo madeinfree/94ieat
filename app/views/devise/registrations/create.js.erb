@@ -1,0 +1,12 @@
+<% if @user.errors.any? %>
+(function(){
+  var $registrationForm = $('#signup');
+  var $form = $('<%= j render 'form' %>');
+   $form.modal();
+  }
+})();
+<% else %>
+(function(){
+	window.location.href = "<%= stores_url %>";
+})();
+<% end %>
