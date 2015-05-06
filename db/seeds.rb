@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Setting.create(title: '94IEAt | 專業便當、飲料外送訂餐系統')
 User.create!(email: 'jzd.tsai@gmail.com', password: '00000000', password_confirmation: '00000000', admin: true)
 Store.create!(name: '香港-發財小館', address: '高雄市鹽埕區七賢三路108號(新樂街口)', tel: '(07)532-4959')
 Store.create!(name: '阿英排骨飯', address: '高雄市鹽埕區富野路79-2號(城隍廟邊)', tel: '(07)521-5562')
