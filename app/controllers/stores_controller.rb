@@ -4,7 +4,7 @@ class StoresController < ApplicationController
 	before_action :del_cart, only: [:show]
 		
 	def index
-		@stores = Store.paginate(:page => params[:page], :per_page => 4)
+		@stores = Store.order(status: :desc).paginate(:page => params[:page], :per_page => 4)
 		@cart = CartItem.where(cart_id: current_cart.id).order(cart_id: :desc)
 	end
 	def new
