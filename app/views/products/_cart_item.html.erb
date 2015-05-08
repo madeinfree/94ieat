@@ -21,5 +21,5 @@
 </div>
 <div class="panel-body">
   <%= link_to('前往結帳', checkout_carts_path, method: "post") %>
-  <%= link_to('取消訂單', delete_all_carts_path, method: "post", class: "pull-right") %>
+  <%= link_to('取消訂單', delete_all_carts_path, method: "post", class: "pull-right", remote: true) %>
 </div>
