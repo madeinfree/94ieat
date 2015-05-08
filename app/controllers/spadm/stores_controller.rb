@@ -1,6 +1,9 @@
 class Spadm::StoresController < Spadm::BaseController
+
+	skip_before_filter :verify_authenticity_token, :only => :change_status
 	before_action :map
 	before_action :required_store!, only: [:show, :edit, :update]
+
 	def index
 		@stores = Store.all
 	end
@@ -19,13 +22,23 @@ class Spadm::StoresController < Spadm::BaseController
 	def show
 		# 商家頁會有新增產品的需求, 所以用一個session去記住現在是哪個商家.
 		session[:sid] = @store.id
-		@products = StoreProduct.where(store_id: session[:sid])
+		@products = Product.where(store_id: session[:sid])
 	end
 	def edit
 		
 	end
 	def update
 		
+	end
+	def change_status
+		@store = Store.find(params[:store_id])
+		if @store.status == "0"
+			@store.status = "1"
+		else
+			@store.status = "0"
+		end
+		@store.save
+		render :js => ""
 	end
 
 	private
