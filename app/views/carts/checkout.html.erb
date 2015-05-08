@@ -31,6 +31,14 @@
         <div class="panel-body">
         <a href="http://line.me/ti/p/%40lbd0218a"><img height="36" border="0" alt="加入好友" src="http://biz.line.naver.jp/line_business/img/btn/addfriends_zh-Hant.png"></a>
           <%= form_for @order do |f| %>
+            <% unless @order.errors.full_messages.blank? %>
+              <h5 class="text-info"> * 請正確填寫表單 </h5>
+              <% @order.errors.full_messages.each do |message| %>
+                <h3 class="text-danger"> 
+                  * <%= message %> 
+                </h3>
+              <% end %>
+            <% end %>
             <%= f.hidden_field :total, value: total %>
             <%= f.fields_for :order_infos do |info| %>
               LineID<%= info.text_field :lineid %>
@@ -38,6 +46,7 @@
               收貨人<%= info.text_field :shipping_name %>
               配送地點<%= info.text_field :shipping_address %>
             <% end %>
+            <br />
             <%= f.submit '訂單送出', class: "btn btn-success btn-xs" %>
           <% end %>
         </div>
