@@ -20,6 +20,10 @@
   外送費<%= shipping_free(sum) %>
 </div>
 <div class="panel-body">
-  <%= link_to('前往結帳', checkout_carts_path, method: "post") %>
+  <% if sum < 1 %>
+    請選擇餐飲
+  <% else %>
+    <%= link_to('前往結帳', checkout_carts_path, method: "post") %>
+  <% end %>
   <%= link_to('清空購物車', delete_all_carts_path, method: "post", class: "pull-right", remote: true) %>
 </div>
