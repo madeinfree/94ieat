@@ -1,13 +1,27 @@
-94iEat TODO:      
+94iEat todo:      
 
   facebook 串接 [todo]
 
-  訂單問題 [todo]
+  訂單查詢 [todo]
 
-  template google map 問題 [todo]
+  商家查詢 [todo]
 
-94iEat OK:      
+  管理員管理 [todo]
+
+94iEat bug:      
+
+  template google map 問題 [bug]
+
+94iEat fixed:      
 
   購物車右側數量更新 [ok]
 
   商品亂加 bug [ok]
+
+  管理員頁面問題 [ok]
+
+  前往結帳如果沒有商品一樣會到 order 問題 [ok]
+
+94iEat advice:
+
+  店家與商品能否有圖片顯示 [advice]
