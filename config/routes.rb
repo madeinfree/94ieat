@@ -32,7 +32,11 @@ Rails.application.routes.draw do
 	#站方管理員
 	namespace :spadm do
 		root 'stores#index'
-		resources :stores
+		resources :stores do
+      collection do
+        post ':store_id/change_status', to: 'stores#change_status', as: :change_status
+      end
+    end
 		resources :settings
 		resources :store_categories
 		resources :products
