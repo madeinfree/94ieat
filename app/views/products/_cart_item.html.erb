@@ -5,6 +5,9 @@
   <%= get_name(p.product.id) %> x
   <%= p.qty %>個
   <% sum = sum + p.qty %>
+  <%= link_to delete_one_carts_path(p.product_id), method: :post, remote: true do  %>
+    <span class="pull-right glyphicon glyphicon-minus" style="cursor: pointer;"></span>
+  <% end %>
 </div>
 <% end %>
 <div class="panel-heading">
@@ -15,4 +18,5 @@
 </div>
 <div class="panel-body">
   <%= link_to('前往結帳', checkout_carts_path, method: "post") %>
+  <%= link_to('取消訂單', delete_all_carts_path, method: "post", class: "pull-right") %>
 </div>
