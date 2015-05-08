@@ -28,13 +28,12 @@ class CartsController < ApplicationController
       @ci = @cart.cart_items.build(product: @product)
       @ci.save
     end
-  end
+  end 
 
-  def destroy_carts
+  def delete_all
     @cart = Cart.find_by(id: current_cart.id)
-    @product = Product.find(params[:product_id])
     @cis = @cart.cart_items
-    @cis.destroy
+    @cis.clear
   end
 
 end
