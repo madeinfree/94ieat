@@ -11,12 +11,14 @@ Rails.application.routes.draw do
 	resources :products do
 		member do 
 			post :add_to_cart_item
+      post :destroy_carts_product_path
 		end
 	end 
 	resources :carts do
     collection do
       #cart可能會有的事件: 刪除一個、刪除多個、修改數量、優惠券(若是有行銷模組)
-      post :delete_one
+      #post :delete_one
+      post ':product_id/delete_one', to: 'carts#delete_one', as: :delete_one
       post :delete_all
       post :modify_quantity
 
