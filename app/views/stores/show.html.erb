@@ -37,7 +37,7 @@
                       <td><%= product.name %></td>
                       <td><%= product.price %></td>
                         <td>
-                        <% if @store.status == '1' %>
+                        <% if @store.status == '0' %>
                           <%= link_to add_to_cart_item_product_path(product), method: :post, remote: true do  %>
                           <span class="glyphicon glyphicon-plus"></span>
                           <% end %>
