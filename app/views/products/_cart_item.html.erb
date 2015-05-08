@@ -5,8 +5,11 @@
   <%= get_name(p.product.id) %> x
   <%= p.qty %>個
   <% sum = sum + p.qty %>
+  <%= link_to add_to_cart_item_product_path(p.product_id), method: :post, remote: true do  %>
+    <span class="btn btn-default btn-xs pull-right glyphicon glyphicon-plus" style="cursor: pointer;"></span>
+  <% end %>
   <%= link_to delete_one_carts_path(p.product_id), method: :post, remote: true do  %>
-    <span class="pull-right glyphicon glyphicon-minus" style="cursor: pointer;"></span>
+    <span class="btn btn-default btn-xs pull-right glyphicon glyphicon-minus" style="cursor: pointer;"></span>
   <% end %>
 </div>
 <% end %>
