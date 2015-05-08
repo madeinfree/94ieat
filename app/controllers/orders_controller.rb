@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
 			# 修改倒回顯示該筆訂單明細.
 			redirect_to order_path(@order)
 		else
-			render 'cart/checkout'
+			render 'carts/checkout'
 		end
 	end
 	def show
