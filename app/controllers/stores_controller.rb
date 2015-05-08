@@ -1,7 +1,8 @@
 class StoresController < ApplicationController
 	before_action :map
 	before_action :required_store!, only: [:show]
-	before_action :del_cart, only: [:show]
+	before_action :del_cart, only: [:show, :index]
+	respond_to :js, :html
 		
 	def index
 		@stores = Store.order(status: :desc).paginate(:page => params[:page], :per_page => 4)
@@ -22,12 +23,12 @@ class StoresController < ApplicationController
 	def show
 		session[:sid] = params[:id]
 
-		@store = Store.find_by(id: params[:id])
+		@store = Store.find_by(id: params[:id].to_i)
 		unless @store.present?
 			flash[:notice] = "查無該筆資料"
 			redirect_to stores_url
 		end
-		@products = @store.products.where(store_id: params[:id])
+		@products = @store.products.where(store_id: params[:id].to_i)
 
 		@cart = Cart.find_by(id: current_cart.id)
 		#這台車的所有商品
