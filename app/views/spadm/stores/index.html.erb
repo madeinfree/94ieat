@@ -2,6 +2,7 @@
 <%= render 'common/sp_leftside' %>
 <!-- Content -->
 <div id="wrapper" class="full">
+  <span class="status-change-progress-bar text-danger" style="position: absolute; display: none;">更新狀態..</span>
   <div id="content" class="max">
       <div class="whiteBg">
         <div class="panel panel-default">
@@ -65,11 +66,19 @@
   <div class="clearfix"></div>
 </div>
 <script>
+  var $ststus_bar = $(".status-change-progress-bar");
   $(".status-check").bind('change', function(){
+    $ststus_bar.html("更新狀態..");
+    $ststus_bar.fadeIn(1);
     $.ajax({
       url: '/spadm/stores/' + this.value + '/change_status',
       type: 'POST',
       data: {"status": this.checked}
+    }).done(function() {
+      $ststus_bar.html("更新完成");
+      setTimeout(function() {
+        $ststus_bar.fadeOut(400);
+      },500);
     }); 
   });
 </script>
