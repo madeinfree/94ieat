@@ -38,7 +38,18 @@
                         <tr>
                             <td><input type="checkbox"></td>
                             <td>
-                              <div class="checkbox switch"><label><input type="checkbox" checked="checked"><span class="cs-place"><span class="fa fa-check cs-handler"></span></span></label></div>
+                              <div class="checkbox switch">
+                                <label>
+                                  <% if store.status.to_i == 1 %>
+                                    <%= check_box_tag '', store.id, true, class: 'status-check' %>
+                                  <% else %>
+                                    <%= check_box_tag '', store.id, false, class: 'status-check' %>
+                                  <% end %>
+                                  <span class="cs-place">
+                                    <span class="fa fa-check cs-handler"></span>
+                                  </span>
+                                </label>
+                              </div>
                             </td>
                             <td><%= store.st_type %></td>
                             <td><%= link_to store.name, spadm_store_path(store) %></td>
@@ -53,3 +64,12 @@
   </div>
   <div class="clearfix"></div>
 </div>
+<script>
+  $(".status-check").bind('change', function(){
+    $.ajax({
+      url: '/spadm/stores/' + this.value + '/change_status',
+      type: 'POST',
+      data: {"status": this.checked}
+    }); 
+  });
+</script>
