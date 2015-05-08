@@ -7,8 +7,10 @@ class CartsController < ApplicationController
 		#確認這台車的所有商品
 		@ci = current_cart.cart_items
 		#輸入訂購人資訊
-		@order = current_user.orders.build
-		@info = @order.order_infos.build
+    if @ci.size > 0
+		  @order = current_user.orders.build
+		  @info = @order.order_infos.build
+    end
 	end
 
   def delete_one
