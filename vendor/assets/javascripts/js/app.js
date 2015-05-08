@@ -345,11 +345,9 @@
     $(window).resize(function() {
         windowResizeHandler();
     });
-
     setTimeout(function() {
         $('body').removeClass('notransition');
-
-        map = new google.maps.Map(document.getElementById('mapView'), options);
+        map = new google.maps.Map(document.getElementById('map'), options);
         var styledMapType = new google.maps.StyledMapType(styles, {
             name : 'Styled'
         });
