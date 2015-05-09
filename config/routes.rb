@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   "Hi!! Im developer1"
-  "Hi!! Im deer1"
-
-  "Hi!! Im developer23"
   #靜態頁面
   root 'stores#index'
   get 'about', to: 'pages#about', as: :about
