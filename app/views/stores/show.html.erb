@@ -23,7 +23,7 @@
             </ul>
             <div class="tab-content">
               <div class="tab-pane fade active in" id="home">
-                <table class="table table-hover" style="font-size: 20px;">
+                <table class="table" style="font-size: 20px;">
                   <thead>
                     <tr>
                       <th>品項</th>
@@ -39,7 +39,7 @@
                         <td>
                         <% if @store.status == '1' %>
                           <%= link_to add_to_cart_item_product_path(product), method: :post, remote: true do  %>
-                          <span class="text-success glyphicon glyphicon-plus-sign"></span>
+                          <span class="text-success glyphicon glyphicon-plus-sign" data-toggle="tooltip" data-placement="right" title="立即加入購物車"></span>
                           <% end %>
                         <% else %>
                           <%= link_to '#', method: :post, remote: true do  %>
@@ -73,3 +73,8 @@
 </div>
 <div class="clearfix"></div>
 </div>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
