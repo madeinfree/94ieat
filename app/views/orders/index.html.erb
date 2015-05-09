@@ -15,6 +15,7 @@
               <th class="text-center" style="width:80px;">訂單總計</th>
               <th class="text-center" style="width:80px;">訂單日期</th>
               <th class="text-center" style="width:80px;">付款狀態</th>
+              <th class="text-center" style="width:80px;">訂單選項</th>
             </tr>
           </thead>
           <tbody>
@@ -33,6 +34,7 @@
               <td class="text-center">NT <%= order.total %> $</td>
               <td class="text-center"><%= (order.created_at + 8.hours) %></td>
               <td class="text-center"><%= order.paid %></td>
+              <td class="text-center">取消訂單</td>
             </tr>
             <% end %>
           </tbody>
