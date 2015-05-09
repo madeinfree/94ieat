@@ -1,0 +1,42 @@
+<!-- Left Side Navigation -->
+<%= render 'common/leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full" style="border-top: 1px solid #ddd;">
+    <div class="whiteBg">
+      <div class="panel panel-default">
+        <div class="panel-heading">訂單管理</div>
+      </div>
+      <div class="table-overflow">
+        <table class="table" id="inboxTable">
+          <thead>
+            <tr>
+              <th class="text-center" style="width:50px;">訂單詳細</th>
+              <th class="text-center" style="width:230px;">訂單內容</th>
+              <th class="text-center" style="width:80px;">訂單總計</th>
+              <th class="text-center" style="width:80px;">訂單日期</th>
+              <th class="text-center" style="width:80px;">付款狀態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+            <tr>
+              <td class="text-center">
+                <%= link_to "詳細內容", order_path(order) %>
+              </td>
+              <td class="text-center">
+                <% order.items.each do |item| %>
+                  <%= item.product_name %>
+                  *
+                  <%= item.qty %>
+                <% end %>
+              </td>
+              <td class="text-center">NT <%= order.total %> $</td>
+              <td class="text-center"><%= (order.created_at + 8.hours) %></td>
+              <td class="text-center"><%= order.paid %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
