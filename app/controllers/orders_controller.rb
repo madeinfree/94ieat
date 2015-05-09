@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
-    
+    @orders = Order.where(user_id: current_user)
   end
 
 	def create
@@ -19,6 +19,12 @@ class OrdersController < ApplicationController
 		@order = current_user.orders.find_by(id: params[:id])
 		@oi = @order.items
 	end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path
+  end
 
 	private
   def order_params

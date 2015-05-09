@@ -7,7 +7,7 @@ Rails.application.routes.draw do
  	
  	resources :locals 
   resources :stores
-  resources :orders 
+  resources :orders
 	resources :products do
 		member do 
 			post :add_to_cart_item
@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 		resources :store_categories
 		resources :products
 		resources :locals
+    resources :orders
 	end
 	#營運管理員
 	namespace :opadm do
