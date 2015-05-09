@@ -23,6 +23,7 @@
                                     <th>設為主打</th>
                                     <th>品項</th>
                                     <th>價格</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody class="table">
@@ -33,6 +34,10 @@
                                 </td>
                                 <td><%= product.name %></td>
                                 <td><%= product.price %></td>
+                                <td>
+                                    <span class="glyphicon glyphicon-minus" style="cursor: pointer;" title="刪除"></span>
+                                    <span class="glyphicon glyphicon-cog" style="cursor: pointer;" title="修改內容"></span>
+                                </td>
                             </tr>
                             <% end %>
                             </tbody>
