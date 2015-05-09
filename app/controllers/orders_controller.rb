@@ -1,4 +1,9 @@
 class OrdersController < ApplicationController
+
+  def index
+    
+  end
+
 	def create
 		@order = current_user.orders.build(order_params)
     if @order.save
@@ -9,13 +14,16 @@ class OrdersController < ApplicationController
 			render 'carts/checkout'
 		end
 	end
+
 	def show
 		@order = current_user.orders.find_by(id: params[:id])
 		@oi = @order.items
 	end
+
 	private
   def order_params
     params.require(:order).permit(:total,:order_infos_attributes =>
        [:shipping_name, :shipping_address, :lineid, :company] )
   end
+
 end
