@@ -10,6 +10,7 @@
         <table class="table" id="inboxTable">
           <thead>
             <tr>
+              <th class="text-center" style="width:50px;">訂單編號</th>
               <th class="text-center" style="width:50px;">訂單詳細</th>
               <th class="text-center" style="width:50px;">訂單人</th>
               <th class="text-center" style="width:80px;">訂單總計</th>
@@ -19,23 +20,59 @@
             </tr>
           </thead>
           <tbody>
+            <% index = 0 %>
             <% @orders.each do |order| %>
             <tr>
+              <td class="text-center"><%= order.id %></td>
               <td class="text-center">
                 <%= link_to "詳細內容", order_path(order) %>
               </td>
               <td class="text-center"><%= order.user.email %></td>
               <td class="text-center">NT <%= order.total %> $</td>
               <td class="text-center"><%= (order.created_at + 8.hours) %></td>
-              <td class="text-center"><%= order.paid %></td>
+              <td class="text-center order-paid-td">
+                <% if order.payment_method.to_i == 1 %>
+                  尚未處理
+                <% elsif order.payment_method.to_i == 2 %>
+                  通知消費者
+                <% elsif order.payment_method.to_i == 3 %>
+                  通知商家
+                <% elsif order.payment_method.to_i == 4 %>
+                  餐點出貨
+                <% elsif order.payment_method.to_i == 5 %>
+                  交易完成
+                <% end %>
+              </td>
               <td class="text-center">
                 <%= link_to "取消訂單", order_path(order), method: :DELETE, data:{ confirm: "確定刪除?" }%>
-                <%= link_to "操作訂單", edit_spadm_order_path(order) %>
+                <%= link_to "操作訂單", edit_spadm_order_path(order), class: "menu_option", data: { toggle: "modal", target: "#myModal", index: index  }, remote: true %>
               </td>
             </tr>
+            <% index = index + 1 %>
             <% end %>
           </tbody>
         </table>
       </div>
     </div>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">修改訂單內容<%= @orders.inspect %></h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button id="close-button" type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+        <button id="save-button" type="button" class="btn btn-primary">儲存設定</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('.menu_option').on("click", function(e) {
+    $("#save-button")[0].dataset.index = this.dataset.index;
+  });
+</script>
