@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 		resources :stores do
       collection do
         post ':store_id/change_status', to: 'stores#change_status', as: :change_status
+        post ':store_id/del_store_product/:product_id', to: 'stores#del_store_product', as: :del_store_product
       end
     end
 		resources :settings
