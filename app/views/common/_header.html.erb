@@ -12,7 +12,7 @@
   </div>
   <% if user_signed_in? %>
   <div class="headerUserWraper">
-    <a href="#" class="userHandler dropdown-toggle" data-toggle="dropdown"><span class="icon-user"></span><span class="counter">5</span></a>
+    <a href="#" class="userHandler dropdown-toggle" data-toggle="dropdown"><span class="icon-user"></span></a>
     <a href="#" class="headerUser dropdown-toggle" data-toggle="dropdown">
     <img class="avatar headerAvatar pull-left" src="/assets/images/avatar-1.png" alt="avatar">
     <div class="userTop pull-left">
@@ -26,7 +26,7 @@
         <div class="mobAvatarName">Action</div>
       </div>
       <ul>
-        <li><a href="#"><span class="icon-settings"></span>訂單查詢</a></li>
+        <li><a href="./orders"><span class="icon-settings"></span>訂單查詢</a></li>
         <li class="divider"></li>
         <li>
           <%= link_to  destroy_user_session_path, method: :delete do %>
