@@ -1,10 +1,12 @@
 <div class="panel-heading">購物車</div>
 <% sum = 0 %>
+<% price = 0 %>
 <% @cis.each do |p| %>
 <div class="panel-body">
   <%= get_name(p.product.id) %> x
-  <%= p.qty %>個
+  <%= p.qty %>個 單價 <%= p.product.price %>
   <% sum = sum + p.qty %>
+  <% price = price + (p.product.price * p.qty) %>
   <%= link_to add_to_cart_item_product_path(p.product_id), method: :post, remote: true do  %>
     <span class="btn btn-default btn-xs pull-right glyphicon glyphicon-plus" style="cursor: pointer;"></span>
   <% end %>
@@ -14,10 +16,11 @@
 </div>
 <% end %>
 <div class="panel-heading">
-  商品數共<%= sum %>個
+  商品數共<%= sum %>個 
+  <span class="pull-right">總和 <%= price %> 元</span>
 </div>
 <div class="panel-heading">
-  外送費<%= shipping_free(sum) %>
+  <s>外送費<%= shipping_free(sum) %></s><span class="text-danger">（試營運期間不收外送費）</span>
 </div>
 <div class="panel-body">
   <% if sum < 1 %>
