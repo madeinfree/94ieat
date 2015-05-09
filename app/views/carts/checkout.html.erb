@@ -18,21 +18,18 @@
         </div>
         <% end %>
         <div class="panel-heading">
-        商品數<%= sum %>個，共<%= total %>元<br>
-        運費：<%= shipping_free(sum) %><br>
+        商品數<%= sum %>個，共 <%= total %> 元<br>
+        試營運期間運費優惠價格：<%= sum * 5 %> 元<br />
+        <s>運費：<%= shipping_free(sum) %></s><span class="text-danger">（試營運期間不收運費起跳價）</span><br>
         <%
-        total = shipping_free(sum) + total
+        total = (sum * 5) + total
         %>
-        總費用：<%= total %>
-        <h5><b>
-          <%= link_to "繼續購物", stores_path, class: "text-info" %>
-        </b></h5>
+        總費用：<%= total %> 元
         </div>
       </div>
       <div class="panel panel-default">
         <div class="panel-heading">填入訂購人資訊</div>
         <div class="panel-body">
-        <a href="http://line.me/ti/p/%40lbd0218a"><img height="36" border="0" alt="加入好友" src="http://biz.line.naver.jp/line_business/img/btn/addfriends_zh-Hant.png"></a>
           <%= form_for @order do |f| %>
             <% unless @order.errors.full_messages.blank? %>
               <h5 class="text-info"> * 請正確填寫表單 </h5>
