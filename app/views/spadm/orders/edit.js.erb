@@ -1,0 +1,53 @@
+var options = "<option value='1'>尚未處理</option>" +
+               "<option value='2'>通知消費者</option>" +
+               "<option value='3'>通知商家</option>" +
+               "<option value='4'>餐點出貨</option>" +
+               "<option value='5'>交易完成</option>";
+$('#myModalLabel').text("更改第 <%= @order.id %> 編號訂單狀況");
+$('.modal-body').html("<span>訂單狀態</span><select id='order-status-select' class='form-control'>" + options + "</select>")
+
+var orderPaidTd = $('.order-paid-td');
+var saveButton = $('#save-button');
+var closeButton = $('#close-button')[0];
+var orderStatusSelect = $('#order-status-select');
+var status;
+
+if(!saveButton.data("events")) {
+  saveButton.on("click", save)
+}
+
+function save(e) {
+  saveButton.html("儲存中..")
+  saveButton.prop("disabled", true);
+  saveButton.off("click", save);
+  $.ajax({
+    url: "orders/" + "<%= @order.id %>",
+    method: "PATCH",
+    data: { "payment_method": orderStatusSelect[0].value }
+  })
+    .done(function(data) {
+      saveButton.html("處理完成");
+      orderPaidTd[saveButton[0].dataset.index].innerHTML = get_payment_method_format(data.payment_method);
+      setTimeout(function() {
+        saveButton.prop("disabled", false);
+        saveButton.html("儲存設定");
+        closeButton.click();
+      }, 1000);
+    })
+    .fail(function() {
+    });
+}
+
+function get_payment_method_format(type) {
+  if(type == 1) {
+    return "尚未處理"
+  } else if(type == 2) {
+    return "通知消費者"
+  } else if(type == 3) {
+    return "通知商家"
+  } else if(type == 4) {
+    return "餐點出貨"
+  } else if(type == 5) {
+    return "交易完成"
+  }
+}
