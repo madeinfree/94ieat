@@ -1,0 +1,41 @@
+<!-- Left Side Navigation -->
+<%= render 'common/leftside' %>
+<!-- Content -->
+<div id="wrapper" class="full" style="border-top: 1px solid #ddd;">
+    <div class="whiteBg">
+      <div class="panel panel-default">
+        <div class="panel-heading">訂單管理</div>
+      </div>
+      <div class="table-overflow">
+        <table class="table" id="inboxTable">
+          <thead>
+            <tr>
+              <th class="text-center" style="width:50px;">訂單詳細</th>
+              <th class="text-center" style="width:50px;">訂單人</th>
+              <th class="text-center" style="width:80px;">訂單總計</th>
+              <th class="text-center" style="width:80px;">訂單日期</th>
+              <th class="text-center" style="width:80px;">訂單狀態</th>
+              <th class="text-center" style="width:80px;">訂單選項</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+            <tr>
+              <td class="text-center">
+                <%= link_to "詳細內容", order_path(order) %>
+              </td>
+              <td class="text-center"><%= order.user.email %></td>
+              <td class="text-center">NT <%= order.total %> $</td>
+              <td class="text-center"><%= (order.created_at + 8.hours) %></td>
+              <td class="text-center"><%= order.paid %></td>
+              <td class="text-center">
+                <%= link_to "取消訂單", order_path(order), method: :DELETE, data:{ confirm: "確定刪除?" }%>
+                <%= link_to "操作訂單", edit_spadm_order_path(order) %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
